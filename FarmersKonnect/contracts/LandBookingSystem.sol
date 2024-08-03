@@ -1,4 +1,5 @@
-pragma solidity >=0.4.21 <=0.6.10;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.23;
 pragma experimental ABIEncoderV2;
 import "./Interfaces/LandStructLib.sol";
 
@@ -27,7 +28,7 @@ contract LandBookingSystem {
     // landId -> LandBooking
     mapping(string => LandStructLib.LandBooking) public landBookingMap;
 
-    // landId -> issuerAddress 
+    // landId -> issuerAddress
     mapping(string => address) public landBookingIssuerMap;
 
     // landId -> customerAddress
@@ -115,7 +116,7 @@ contract LandBookingSystem {
         require(doesShowExist(_showId), "show doesnot exist with this showId");
         return showMap[_showId];
     }
-    
+
     function doesShowExist(string memory _showId) public view returns(bool){
         require(LandStructLib.isANonEmptyString(_showId), "showId is Invalid");
         return showMap[_showId].createdAt > 0;
